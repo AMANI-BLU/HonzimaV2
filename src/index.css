@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-color: #030816;
+  --text-color: #ffffff;
+  --accent-blue: #235ee7;
+  --accent-light-blue: #4da3ff;
+  --card-bg: rgba(10, 15, 35, 0.6);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --text-secondary: #9ba1b4;
+
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--bg-color);
+  position: relative;
+}
+
+/* Background Ambient Glows */
+body::before,
+body::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -1;
+  opacity: 0.15;
+}
+
+body::before {
+  top: -200px;
+  left: -200px;
+  background: var(--accent-light-blue);
+}
+
+body::after {
+  top: 40%;
+  right: -200px;
+  background: var(--accent-blue);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Global utility classes */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.highlight {
+  color: var(--accent-light-blue);
+}

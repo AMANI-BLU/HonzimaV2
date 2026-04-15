@@ -1,0 +1,148 @@
+.servicesSection {
+    padding: 100px 0;
+    position: relative;
+    background: radial-gradient(circle at 50% 50%, rgba(24, 102, 255, 0.02) 0%, transparent 70%);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.starIcon {
+    color: var(--accent-light-blue);
+    font-size: 0.9rem;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -1.5px;
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+}
+
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.serviceCard {
+    background: rgba(15, 20, 35, 0.4);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.3s ease;
+    min-height: 380px;
+}
+
+.wideCard {
+    grid-column: span 3;
+}
+
+.narrowCard {
+    grid-column: span 2;
+}
+
+.serviceCard:hover {
+    border-color: rgba(24, 102, 255, 0.4);
+    background: rgba(20, 30, 50, 0.6);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(24, 102, 255, 0.1);
+}
+
+.cardTitle {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.cardDescription {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background: rgba(24, 102, 255, 0.1);
+    border-color: rgba(24, 102, 255, 0.2);
+}
+
+.tagIcon {
+    color: var(--accent-light-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1024px) {
+    .servicesGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wideCard,
+    .narrowCard {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .servicesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+}
