@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 60px;
-    margin-top: 130px !important;
+    margin-top: 150px !important;
     padding-top: 0 !important;
     padding-bottom: 40px;
     position: relative;
@@ -32,7 +32,18 @@
     background-color: #554433;
     /* Dark brownish like image */
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.heroBadge {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 100px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
 .profileInfo {
@@ -43,11 +54,11 @@
 
 .name {
     font-weight: 700;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .handle {
-    color: #9ba1b4;
+    color: var(--text-secondary);
 }
 
 .headline {
@@ -55,12 +66,12 @@
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -1px;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .subtitle {
     font-size: 1.35rem;
-    color: #9ba1b4;
+    color: var(--text-secondary);
     line-height: 1.6;
     max-width: 100%;
     font-weight: 300;
@@ -77,7 +88,7 @@
 
 .ctaButton {
     background: linear-gradient(90deg, #1866ff 0%, #4facfe 100%);
-    color: white;
+    color: var(--text-color);
     border: none;
     padding: 18px 40px;
     font-size: 1.15rem;
@@ -157,10 +168,29 @@
     width: 140px;
     height: 140px;
     font-size: 4rem;
-    transform: rotate(12deg);
+    transform: rotate(12deg) translateY(0);
     filter: blur(8px);
     opacity: 0.6;
     box-shadow: 0 20px 60px rgba(0, 87, 255, 0.8);
+}
+
+/* Specialized reveal that preserves rotation and blur */
+:global(.reveal.active).badgeHugeBlur {
+    animation: blurAppearBlurry 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes blurAppearBlurry {
+    from {
+        opacity: 0;
+        filter: blur(20px);
+        transform: rotate(12deg) translateY(30px);
+    }
+
+    to {
+        opacity: 0.6;
+        filter: blur(8px);
+        transform: rotate(12deg) translateY(0);
+    }
 }
 
 .badgeSmallSharp {
@@ -169,9 +199,27 @@
     width: 70px;
     height: 70px;
     font-size: 2rem;
-    transform: rotate(-15deg);
+    transform: rotate(-15deg) translateY(0);
     box-shadow: 0 15px 40px rgba(0, 87, 255, 0.6);
     z-index: 4;
+}
+
+:global(.reveal.active).badgeSmallSharp {
+    animation: blurAppearSharp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes blurAppearSharp {
+    from {
+        opacity: 0;
+        filter: blur(12px);
+        transform: rotate(-15deg) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: rotate(-15deg) translateY(0);
+    }
 }
 
 .imageWrapper {
@@ -251,6 +299,11 @@
     .textContent {
         align-items: center;
         padding-right: 0;
+        order: 2;
+    }
+
+    .visualContent {
+        order: 1;
     }
 
     .profileBadge {
@@ -269,7 +322,33 @@
 
     .availableCard,
     .badgeSmallSharp,
-    .badgeHugeBlur,
+    .badgeHugeBlur {
+        display: flex;
+    }
+
+    .badgeHugeBlur {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+        right: 0;
+        top: -10px;
+    }
+
+    .badgeSmallSharp {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        left: 0;
+        top: 10%;
+    }
+
+    .availableCard {
+        bottom: 10%;
+        right: 0;
+        padding: 8px 16px;
+        font-size: 0.75rem;
+    }
+
     .bgBigChar {
         display: none;
     }

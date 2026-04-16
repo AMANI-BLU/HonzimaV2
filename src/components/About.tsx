@@ -2,17 +2,16 @@ import styles from './About.module.css';
 
 export default function About() {
     return (
-        <section className={styles.aboutContainer}>
+        <section id="about" className={styles.aboutContainer}>
             <div className="container">
                 <div className={styles.badge}>
-                    <span className={styles.starIcon}>★</span>
                     About Me
                 </div>
 
-                <h2 className={styles.headline}>
+                <h2 className={`${styles.headline} reveal`}>
                     I partner with creators and brands to turn ideas into engaging, high-quality videos.
                 </h2>
-                <h3 className={styles.subHeadline}>
+                <h3 className={`${styles.subHeadline} reveal delay-1`}>
                     Results-focused, fast delivery, reliable quality.
                 </h3>
 

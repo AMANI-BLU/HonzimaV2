@@ -1,0 +1,143 @@
+.clientSection {
+    padding: 80px 0;
+    position: relative;
+    background-color: var(--bg-color);
+    scroll-margin-top: 100px;
+    overflow: hidden;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: fit-content;
+}
+
+.starIcon {
+    color: var(--brand-teal);
+    font-size: 0.9rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -2px;
+    line-height: 1.1;
+}
+
+.highlight {
+    color: var(--brand-teal);
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.marqueeContainer {
+    width: 100%;
+    mask-image: linear-gradient(to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent);
+    overflow: hidden;
+}
+
+.marqueeTrack {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scroll 60s linear infinite;
+}
+
+.marqueeTrack:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-50% - 10px));
+    }
+}
+
+.miniCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+    width: 320px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.miniCard:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--brand-teal);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.tinyAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.meta {
+    flex: 1;
+}
+
+.name {
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.role {
+    color: var(--brand-teal);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.miniQuote {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+}

@@ -2,7 +2,7 @@
     padding: 20px 0 80px 0;
     text-align: center;
     position: relative;
-    /* Removed radial light to match hero bg */
+    scroll-margin-top: 100px;
 }
 
 /* Subtle Grid Background in Site Blue */
@@ -46,8 +46,23 @@
     max-width: 900px;
     margin: 0 auto 15px auto;
     line-height: 1.2;
-    color: #fff;
+    color: var(--text-color);
     letter-spacing: -1px;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    line-height: 1.1;
+}
+
+.bio {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 40px;
 }
 
 .subHeadline {
@@ -67,9 +82,9 @@
 }
 
 .statCard {
-    background: rgba(10, 15, 30, 0.6);
+    background: var(--card-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 40px 30px;
     transition: transform 0.3s ease, border-color 0.3s ease;
@@ -80,7 +95,6 @@
 }
 
 .statCard:hover {
-    transform: translateY(-5px);
     border-color: rgba(24, 102, 255, 0.3);
 }
 

@@ -1,0 +1,259 @@
+.processSection {
+    padding: 120px 0;
+    position: relative;
+    background-color: var(--bg-color);
+    scroll-margin-top: 100px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: fit-content;
+}
+
+.starIcon {
+    color: var(--brand-teal);
+    font-size: 0.9rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+}
+
+.highlight {
+    color: var(--brand-teal);
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.processGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.processCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.processCard:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--brand-teal);
+}
+
+.stepNumber {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.visualArea {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Card 1: Upload Visuals */
+.uploadVisual {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.uploadIcon,
+.driveIcon,
+.telegramIcon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.uploadIcon {
+    color: var(--brand-teal);
+    border: 1px solid var(--brand-teal);
+}
+
+.driveIcon {
+    color: #34A853;
+}
+
+.telegramIcon {
+    color: #0088cc;
+}
+
+/* Card 2: Software Icons */
+.softwareIcons {
+    display: flex;
+    gap: 15px;
+}
+
+.iconAe,
+.iconDr,
+.iconPr {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+.iconAe {
+    background: #00005C;
+    color: #D19AFF;
+    border: 1px solid #D19AFF;
+}
+
+.iconDr {
+    background: #000;
+    color: var(--brand-teal);
+}
+
+.iconPr {
+    background: #00005C;
+    color: #31A8FF;
+    border: 1px solid #31A8FF;
+}
+
+/* Card 3: Revision Visuals */
+.revisionVisual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.revisionBadge {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 8px 16px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.revisionBadge svg {
+    width: 16px;
+    height: 16px;
+    color: var(--text-secondary);
+}
+
+.statusBadge {
+    background: linear-gradient(90deg, #1866ff 0%, #4facfe 100%);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* Card 4: Ready to Post Visuals */
+.postVisual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.fileLabel {
+    background: #fff;
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.footerLabels {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.thumbLabel {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.publishLabel {
+    background: #235ee7;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.cardDesc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .processGrid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+}
