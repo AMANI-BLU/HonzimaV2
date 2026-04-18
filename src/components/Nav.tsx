@@ -38,11 +38,9 @@ export default function Nav() {
 
                 {/* Navigation Links */}
                 <div className={`${styles.navLinks} ${isMenuOpen ? styles.mobileOpen : ''}`}>
-                    <Link to="/#home" className={styles.link} onClick={() => {
+                    <Link to="/" className={styles.link} onClick={() => {
                         setIsMenuOpen(false);
-                        if (window.location.pathname === '/' && !window.location.hash) {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}>Home</Link>
                     <Link to="/#about" className={styles.link} onClick={() => setIsMenuOpen(false)}>About</Link>
                     <Link to="/#services" className={styles.link} onClick={() => setIsMenuOpen(false)}>Services</Link>

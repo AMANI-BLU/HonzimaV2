@@ -60,8 +60,8 @@ body {
 }
 
 /* Background Ambient Glows */
-body::before,
-body::after {
+.app-container::before,
+.app-container::after {
   content: '';
   position: absolute;
   width: 600px;
@@ -72,14 +72,14 @@ body::after {
   opacity: 0.15;
 }
 
-body::before {
+.app-container::before {
   top: -200px;
   left: -200px;
   background: var(--accent-light-blue);
   opacity: var(--mesh-opacity);
 }
 
-body::after {
+.app-container::after {
   top: 40%;
   right: -200px;
   background: var(--accent-blue);
