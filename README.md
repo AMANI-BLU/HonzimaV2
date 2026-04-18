@@ -98,8 +98,3 @@ The output will be located in the `dist` directory.
 ## 🔐 Admin Access
 The administrative dashboard is accessible at `/admin`. It requires authentication via Supabase and allows for real-time updates to the portfolio's content.
 
-## 📜 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-*Created for Honzima - Premium Creative Solutions.*
