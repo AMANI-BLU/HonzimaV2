@@ -35,11 +35,6 @@ export default function AllProjects() {
 
             <Portfolio featuredOnly={false} hideHeader={true} customPadding="20px 0" />
 
-            <div className={styles.footer}>
-                <div className="container">
-                    <p>&copy; {new Date().getFullYear()} Honzima Visuals. All rights reserved.</p>
-                </div>
-            </div>
         </main>
     );
 }
