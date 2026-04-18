@@ -9,7 +9,7 @@ export default function Footer() {
                 <div className={styles.footerGrid}>
                     <div className={styles.column}>
                         <div className={styles.logo}>
-                            <span className={styles.logoAccent}>Hon</span>zima
+                            <span className={styles.logoAccent}>HON</span>ZIMA
                         </div>
                         <p className={styles.brandDesc}>
                             Helping creators and brands stand out through creative edits.

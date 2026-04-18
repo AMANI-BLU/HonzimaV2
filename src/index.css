@@ -7,6 +7,7 @@
   --accent-light-blue: #4da3ff;
   --card-bg: rgba(10, 15, 35, 0.6);
   --border-color: rgba(255, 255, 255, 0.08);
+  --card-hover-bg: rgba(255, 255, 255, 0.05);
   --text-secondary: #9ba1b4;
   --nav-bg: rgba(3, 8, 22, 0.85);
   --mesh-opacity: 0.15;
@@ -31,7 +32,8 @@
   --accent-blue: #235ee7;
   --accent-light-blue: #4da3ff;
   --card-bg: #ffffff;
-  --border-color: rgba(0, 0, 0, 0.08);
+  --border-color: rgba(15, 23, 42, 0.1);
+  --card-hover-bg: rgba(15, 23, 42, 0.03);
   --text-secondary: #64748b;
   --nav-bg: rgba(248, 250, 252, 0.9);
   --mesh-opacity: 0.1;
