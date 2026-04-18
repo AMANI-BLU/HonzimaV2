@@ -24,7 +24,7 @@
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--text-color);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
     width: fit-content;
 }
 
@@ -172,6 +172,7 @@
 
 .revisionBadge {
     background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
     padding: 8px 16px;
     border-radius: 100px;
     display: flex;
@@ -207,6 +208,7 @@
 .fileLabel {
     background: #fff;
     color: #000;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 8px 20px;
     border-radius: 8px;
     font-weight: 700;
@@ -228,6 +230,7 @@
 .publishLabel {
     background: #235ee7;
     color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 6px 16px;
     border-radius: 100px;
     font-size: 0.8rem;

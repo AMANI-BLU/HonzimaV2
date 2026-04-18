@@ -6,7 +6,7 @@
   --accent-blue: #235ee7;
   --accent-light-blue: #4da3ff;
   --card-bg: rgba(10, 15, 35, 0.6);
-  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.15);
   --card-hover-bg: rgba(255, 255, 255, 0.05);
   --card-shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(24, 102, 255, 0.15);
   --btn-text-primary: #ffffff;
