@@ -46,17 +46,14 @@ const ProjectSkeleton = () => {
 export default function Portfolio({
     featuredOnly = false,
     hideHeader = false,
-    hideCategories = false,
     customPadding = '100px 0'
 }: {
     featuredOnly?: boolean,
     hideHeader?: boolean,
-    hideCategories?: boolean,
     customPadding?: string
 }) {
     const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
-    const [activeCategory, setActiveCategory] = useState('All');
 
     useEffect(() => {
         const fetchProjects = async () => {

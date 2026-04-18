@@ -33,7 +33,7 @@ export default function AllProjects() {
                 </header>
             </div>
 
-            <Portfolio featuredOnly={false} hideHeader={true} hideCategories={true} customPadding="20px 0" />
+            <Portfolio featuredOnly={false} hideHeader={true} customPadding="20px 0" />
 
             <div className={styles.footer}>
                 <div className="container">

@@ -309,7 +309,7 @@ export default function Admin() {
                             {editingVideo && (
                                 <button type="button" onClick={() => {
                                     setEditingVideo(null);
-                                    setFormData({ id: '', title: '', category: 'Short-Form', description: '' });
+                                    setFormData({ id: '', title: '', description: '', is_featured: false });
                                 }} className={styles.cancelBtn}>Cancel</button>
                             )}
                         </div>
@@ -337,7 +337,7 @@ export default function Admin() {
                         ))}
                     </div>
                 </div>
-            </div>
+            </div >
 
             <StatusModal
                 isOpen={modal.isOpen}
@@ -347,6 +347,6 @@ export default function Admin() {
                 onConfirm={modal.action || (() => { })}
                 onCancel={() => setModal({ ...modal, isOpen: false })}
             />
-        </div>
+        </div >
     );
 }
