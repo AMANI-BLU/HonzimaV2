@@ -1,41 +1,47 @@
 import styles from './ClientTestimonials.module.css';
+import ludoAvatar from '../assets/LudoET.jpg';
+import etclAvatar from '../assets/ETCL.jpg';
+import cherekaAvatar from '../assets/chereka.png';
+import myAvatar from '../assets/my.png';
+import flipperAvatar from '../assets/flipper.png';
+import alkabaAvatar from '../assets/alkaba.jpg';
 
 const clientReviews = [
     {
-        name: 'Alex Rivera',
-        role: 'Founder, Rivera Media',
-        quote: 'Honzima transformed my workflow. Unmatched quality and speed.',
-        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex'
+        name: 'ETCL Real Estate',
+        role: 'PLC',
+        quote: 'Working with Honzima elevated our real estate videos to a whole new level. He understands real estate marketing, not just editing.',
+        avatar: etclAvatar
     },
     {
-        name: 'Sarah Chen',
-        role: 'Marketing Director',
-        quote: 'Finding an editor who understands brand voice is rare. Nailed it.',
-        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah'
+        name: 'Chereka Kids',
+        role: 'Small business',
+        quote: 'Great work! The edit feels smooth and exactly matches my vision.',
+        avatar: cherekaAvatar
     },
     {
-        name: 'Marcus Thorne',
-        role: 'Head of Content',
-        quote: 'The cinematic feel and attention to detail is truly world-class.',
-        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus'
+        name: 'M Y',
+        role: 'Travel Agency',
+        quote: 'Working with Honzima was a great experience. We will definitely be coming back for more edits.',
+        avatar: myAvatar
     },
     {
-        name: 'David Kim',
-        role: 'Tech Reviewer',
-        quote: 'The best investment for my channel. Professional and consistent.',
-        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=David'
+        name: 'LudoET',
+        role: 'PLC',
+        quote: 'He transformed my vision into a stunning final video. Fast delivery and top-tier editing skills.',
+        avatar: ludoAvatar
     },
     {
-        name: 'Elena Rossi',
-        role: 'Creative Director',
-        quote: 'Exceeded every expectation. A seamless creative partnership.',
-        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Elena'
+        name: 'Alkaba',
+        role: 'Travel Agency',
+        quote: 'Yo this came out way better than I expected, thank you!',
+        avatar: alkabaAvatar
     },
     {
-        name: 'Jordan Smith',
-        role: 'Startup Founder',
-        quote: 'Speed and quality that actually scales with our growth.',
-        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jordan'
+        name: 'Flipper International School',
+        role: 'Education',
+        quote: 'The edit looks so clean, appreciate it!',
+        avatar: flipperAvatar
     }
 ];
 

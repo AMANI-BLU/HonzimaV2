@@ -25,6 +25,24 @@ const YouTubeEmbed = ({ videoId }: { videoId: string }) => {
     );
 };
 
+const ProjectSkeleton = () => {
+    return (
+        <div className={styles.skeletonCard}>
+            <div className={styles.skeletonThumbnail}>
+            </div>
+            <div className={styles.skeletonInfo}>
+                <div className={styles.skeletonCategory}>
+                </div>
+                <div className={styles.skeletonTitle}>
+                </div>
+                <div className={styles.skeletonText}>
+                </div>
+                <div className={`${styles.skeletonText} ${styles.skeletonTextLast}`}>
+                </div>
+            </div>
+        </div>
+    );
+};
 export default function Portfolio({
     featuredOnly = false,
     hideHeader = false,
@@ -106,9 +124,10 @@ export default function Portfolio({
                 )}
 
                 {loading ? (
-                    <div className={styles.loadingState}>
-                        <div className={styles.loader}></div>
-                        <p>Loading projects...</p>
+                    <div className={styles.skeletonGrid}>
+                        {[1, 2, 3, 4, 5, 6].map((i) => (
+                            <ProjectSkeleton key={i} />
+                        ))}
                     </div>
                 ) : (
                     <>

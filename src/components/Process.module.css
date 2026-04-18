@@ -118,12 +118,23 @@
     border: 1px solid var(--brand-teal);
 }
 
-.driveIcon {
-    color: #34A853;
+.driveIcon,
+.telegramIcon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
 }
 
-.telegramIcon {
-    color: #0088cc;
+.customIcon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Card 2: Software Icons */
@@ -132,34 +143,21 @@
     gap: 15px;
 }
 
-.iconAe,
-.iconDr,
-.iconPr {
+.softwareIconWrapper {
     width: 44px;
     height: 44px;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 0.9rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.iconAe {
-    background: #00005C;
-    color: #D19AFF;
-    border: 1px solid #D19AFF;
-}
-
-.iconDr {
-    background: #000;
-    color: var(--brand-teal);
-}
-
-.iconPr {
-    background: #00005C;
-    color: #31A8FF;
-    border: 1px solid #31A8FF;
+.softwareIcon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* Card 3: Revision Visuals */
