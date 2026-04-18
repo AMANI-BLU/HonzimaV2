@@ -3,7 +3,6 @@
     min-height: 100vh;
     background-color: var(--bg-color);
     position: relative;
-    overflow: hidden;
 }
 
 .allProjectsPage::before {

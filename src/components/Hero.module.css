@@ -7,8 +7,7 @@
     padding-top: 0 !important;
     padding-bottom: 40px;
     position: relative;
-    overflow: hidden;
-    /* Added to contain decorative overflow elements */
+    /* Removed overflow hidden to allow ambient glows to bleed */
 }
 
 .textContent {
