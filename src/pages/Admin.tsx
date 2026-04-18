@@ -9,6 +9,27 @@ interface Video {
     is_featured?: boolean;
 }
 
+const ConfirmModal = ({ isOpen, message, onConfirm, onCancel }: {
+    isOpen: boolean,
+    message: string,
+    onConfirm: () => void,
+    onCancel: () => void
+}) => {
+    if (!isOpen) return null;
+    return (
+        <div className={styles.modalOverlay}>
+            <div className={styles.modalContent}>
+                <h3>Confirmation</h3>
+                <p>{message}</p>
+                <div className={styles.modalActions}>
+                    <button onClick={onConfirm} className={styles.confirmBtn}>Confirm</button>
+                    <button onClick={onCancel} className={styles.cancelBtn}>Cancel</button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 export default function Admin() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
@@ -20,6 +41,17 @@ export default function Admin() {
         title: '',
         description: '',
         is_featured: false
+    });
+
+    // Confirmation Modal State
+    const [modal, setModal] = useState<{
+        isOpen: boolean,
+        message: string,
+        action: (() => void) | null
+    }>({
+        isOpen: false,
+        message: '',
+        action: null
     });
 
     useEffect(() => {
@@ -53,12 +85,21 @@ export default function Admin() {
         e.preventDefault();
 
         if (editingVideo) {
-            if (!window.confirm('Are you sure you want to update this video?')) return;
+            setModal({
+                isOpen: true,
+                message: `Are you sure you want to update "${formData.title}"?`,
+                action: () => executeSubmit(true)
+            });
+        } else {
+            executeSubmit(false);
         }
+    };
 
+    const executeSubmit = async (isUpdate: boolean) => {
         setLoading(true);
+        setModal({ ...modal, isOpen: false });
 
-        if (editingVideo) {
+        if (isUpdate && editingVideo) {
             const { error } = await supabase
                 .from('videos')
                 .update({
@@ -88,10 +129,17 @@ export default function Admin() {
         setLoading(false);
     };
 
-    const handleDelete = async (id: string) => {
-        if (!window.confirm('Are you sure you want to delete this video? PERMANENTLY?')) return;
+    const handleDelete = (id: string, title: string) => {
+        setModal({
+            isOpen: true,
+            message: `Are you sure you want to permanently delete "${title}"?`,
+            action: () => executeDelete(id)
+        });
+    };
 
+    const executeDelete = async (id: string) => {
         setLoading(true);
+        setModal({ ...modal, isOpen: false });
         const { error } = await supabase
             .from('videos')
             .delete()
@@ -213,7 +261,7 @@ export default function Admin() {
                                     <h3>{video.title}</h3>
                                     <div className={styles.itemActions}>
                                         <button onClick={() => handleEdit(video)} className={styles.editBtn}>Edit</button>
-                                        <button onClick={() => handleDelete(video.id)} className={styles.deleteBtn}>Delete</button>
+                                        <button onClick={() => handleDelete(video.id, video.title)} className={styles.deleteBtn}>Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -221,6 +269,13 @@ export default function Admin() {
                     </div>
                 </div>
             </div>
+
+            <ConfirmModal
+                isOpen={modal.isOpen}
+                message={modal.message}
+                onConfirm={modal.action || (() => { })}
+                onCancel={() => setModal({ ...modal, isOpen: false })}
+            />
         </div>
     );
 }

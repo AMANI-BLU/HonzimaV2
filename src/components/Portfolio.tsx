@@ -80,23 +80,6 @@ export default function Portfolio({
         fetchProjects();
     }, [featuredOnly]);
 
-    useEffect(() => {
-        let filtered = projects;
-        if (activeCategory !== 'All' && !hideCategories) {
-            filtered = projects.filter(p =>
-                p.category?.toLowerCase() === activeCategory.toLowerCase()
-            );
-        }
-
-        if (featuredOnly) {
-            filtered = filtered.slice(0, 3);
-        }
-
-        setFilteredProjects(filtered);
-    }, [activeCategory, projects, featuredOnly, hideCategories]);
-
-    const categories = ['All', 'Long-Form', 'Short-Form'];
-
     return (
         <section
             id="portfolio"
@@ -127,22 +110,9 @@ export default function Portfolio({
                     </div>
                 ) : (
                     <>
-                        {(!featuredOnly && !hideCategories) && (
-                            <div className={styles.filterContainer}>
-                                {categories.map(cat => (
-                                    <button
-                                        key={cat}
-                                        className={`${styles.filterBtn} ${activeCategory === cat ? styles.activeFilter : ''}`}
-                                        onClick={() => setActiveCategory(cat)}
-                                    >
-                                        {cat}
-                                    </button>
-                                ))}
-                            </div>
-                        )}
 
                         <div className={styles.portfolioGrid}>
-                            {filteredProjects.map((project) => (
+                            {projects.map((project) => (
                                 <div key={project.id} className={`${styles.projectCard} reveal`}>
                                     <YouTubeEmbed videoId={project.id} />
                                     <div className={styles.projectInfo}>
