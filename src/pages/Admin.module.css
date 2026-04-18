@@ -58,7 +58,7 @@
 }
 
 .adminContainer {
-    padding-top: 120px;
+    padding-top: 35px;
     min-height: 100vh;
     background: var(--bg-color);
     position: relative;
