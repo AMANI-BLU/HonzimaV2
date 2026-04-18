@@ -3,7 +3,6 @@
     text-align: center;
     position: relative;
     scroll-margin-top: 100px;
-    overflow: hidden;
 }
 
 /* Subtle Grid Background in Site Blue */
@@ -27,7 +26,6 @@
     position: relative;
     background: radial-gradient(circle at 50% 50%, rgba(24, 102, 255, 0.02) 0%, transparent 70%);
     scroll-margin-top: 100px;
-    overflow: hidden;
 }
 
 .badge {
