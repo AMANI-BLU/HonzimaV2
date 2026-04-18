@@ -11,6 +11,7 @@ import Portfolio from './components/Portfolio'
 import Footer from './components/Footer'
 import AllProjects from './pages/AllProjects'
 import Admin from './pages/Admin'
+import NotFound from './pages/NotFound'
 import './App.css'
 
 const Home = () => (
@@ -79,6 +80,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/portfolio" element={<AllProjects />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <Footer />
