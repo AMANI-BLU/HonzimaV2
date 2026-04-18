@@ -73,6 +73,7 @@
 .processCard:hover {
     background: var(--card-hover-bg);
     border-color: var(--brand-teal);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .stepNumber {

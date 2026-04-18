@@ -96,7 +96,7 @@
 
 .contactBtn {
     background: linear-gradient(90deg, #1866ff 0%, #4facfe 100%);
-    color: var(--text-color);
+    color: var(--btn-text-primary);
     border: none;
     padding: 12px 28px;
     font-size: 0.95rem;

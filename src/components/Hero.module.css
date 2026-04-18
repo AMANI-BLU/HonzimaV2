@@ -88,7 +88,7 @@
 
 .ctaButton {
     background: linear-gradient(90deg, #1866ff 0%, #4facfe 100%);
-    color: var(--text-color);
+    color: var(--btn-text-primary);
     border: none;
     padding: 18px 40px;
     font-size: 1.15rem;

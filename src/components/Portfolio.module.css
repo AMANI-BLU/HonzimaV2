@@ -65,8 +65,8 @@
 
 .projectCard:hover {
     border-color: rgba(24, 102, 255, 0.4);
-    background: rgba(20, 30, 50, 0.6);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(24, 102, 255, 0.15);
+    background: var(--card-hover-bg);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .thumbnailContainer {
