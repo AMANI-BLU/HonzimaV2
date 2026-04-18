@@ -293,3 +293,23 @@
         transform: translateY(-5px);
     }
 }
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .phoneFrame {
+        width: 280px;
+        height: 580px;
+        transform: scale(0.9) rotateY(-5deg);
+    }
+
+    .commentCard {
+        padding: 18px;
+    }
+
+    .testimonialSection {
+        padding: 80px 0;
+    }
+}

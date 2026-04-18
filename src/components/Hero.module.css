@@ -352,3 +352,35 @@
         display: none;
     }
 }
+
+@media (max-width: 480px) {
+    .headline {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .badgeHugeBlur {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .badgeSmallSharp {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .heroContainer {
+        margin-top: 60px !important;
+        gap: 30px;
+    }
+
+    .ctaButton {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+}
