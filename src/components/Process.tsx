@@ -7,6 +7,7 @@ import prIcon from '../assets/priemer.png';
 export default function Process() {
     return (
         <section id="process" className={styles.processSection}>
+            <div className="spotlight" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.08 }}></div>
             <div className="container">
                 <div className={styles.header}>
                     <div className={`${styles.badge} reveal`}>

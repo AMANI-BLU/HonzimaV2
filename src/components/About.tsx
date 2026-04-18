@@ -3,6 +3,7 @@ import styles from './About.module.css';
 export default function About() {
     return (
         <section id="about" className={styles.aboutContainer}>
+            <div className="ambient-glow" style={{ top: '10%', right: '-10%', opacity: 0.08 }}></div>
             <div className="container">
                 <div className={styles.badge}>
                     About Me

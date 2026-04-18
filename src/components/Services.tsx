@@ -128,6 +128,7 @@ const renderGraphic = (type: string) => {
 export default function Services() {
     return (
         <section id="services" className={styles.servicesSection}>
+            <div className="spotlight" style={{ top: '20%', left: '-10%', opacity: 0.1 }}></div>
             <div className="container">
                 <div className={styles.header}>
                     <div className={`${styles.badge} reveal`}>
