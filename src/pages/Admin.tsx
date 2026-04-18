@@ -5,8 +5,8 @@ import styles from './Admin.module.css';
 interface Video {
     id: string;
     title: string;
-    category: string;
     description: string;
+    is_featured?: boolean;
 }
 
 export default function Admin() {
@@ -18,8 +18,8 @@ export default function Admin() {
     const [formData, setFormData] = useState({
         id: '',
         title: '',
-        category: 'Short-Form',
-        description: ''
+        description: '',
+        is_featured: false
     });
 
     useEffect(() => {
@@ -32,7 +32,6 @@ export default function Admin() {
         e.preventDefault();
         if (password === 'honzima2025') {
             setIsAuthenticated(true);
-            fetchVideos();
         } else {
             alert('Incorrect password');
         }
@@ -52,6 +51,11 @@ export default function Admin() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (editingVideo) {
+            if (!window.confirm('Are you sure you want to update this video?')) return;
+        }
+
         setLoading(true);
 
         if (editingVideo) {
@@ -59,15 +63,15 @@ export default function Admin() {
                 .from('videos')
                 .update({
                     title: formData.title,
-                    category: formData.category,
-                    description: formData.description
+                    description: formData.description,
+                    is_featured: formData.is_featured
                 })
                 .eq('id', editingVideo.id);
 
             if (error) alert(error.message);
             else {
                 setEditingVideo(null);
-                setFormData({ id: '', title: '', category: 'Short-Form', description: '' });
+                setFormData({ id: '', title: '', description: '', is_featured: false });
                 fetchVideos();
             }
         } else {
@@ -77,7 +81,7 @@ export default function Admin() {
 
             if (error) alert(error.message);
             else {
-                setFormData({ id: '', title: '', category: 'Short-Form', description: '' });
+                setFormData({ id: '', title: '', description: '', is_featured: false });
                 fetchVideos();
             }
         }
@@ -85,7 +89,7 @@ export default function Admin() {
     };
 
     const handleDelete = async (id: string) => {
-        if (!window.confirm('Are you sure you want to delete this video?')) return;
+        if (!window.confirm('Are you sure you want to delete this video? PERMANENTLY?')) return;
 
         setLoading(true);
         const { error } = await supabase
@@ -103,8 +107,8 @@ export default function Admin() {
         setFormData({
             id: video.id,
             title: video.title,
-            category: video.category,
-            description: video.description
+            description: video.description,
+            is_featured: !!video.is_featured
         });
     };
 
@@ -134,14 +138,14 @@ export default function Admin() {
             <div className="ambient-glow" style={{ bottom: '10%', right: '10%' }}></div>
             <div className="container">
                 <header className={styles.header}>
-                    <h1>Video <span className="highlight">Management</span></h1>
+                    <h1>Admin <span className="highlight">Dashboard</span></h1>
                     <button onClick={() => setIsAuthenticated(false)} className={styles.logoutBtn}>Logout</button>
                 </header>
 
                 <div className={styles.formSection}>
                     <h2>{editingVideo ? 'Edit Video' : 'Add New Video'}</h2>
                     <form onSubmit={handleSubmit} className={styles.form}>
-                        <div className={styles.formGroup}>
+                        <div className={`${styles.formGroup} ${styles.fullWidth}`}>
                             <label>YouTube Video ID</label>
                             <input
                                 type="text"
@@ -163,16 +167,16 @@ export default function Admin() {
                             />
                         </div>
                         <div className={styles.formGroup}>
-                            <label>Category</label>
-                            <select
-                                value={formData.category}
-                                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                            >
-                                <option value="Short-Form">Short-Form</option>
-                                <option value="Long-Form">Long-Form</option>
-                            </select>
+                            <label className={styles.checkboxLabel}>
+                                <input
+                                    type="checkbox"
+                                    checked={formData.is_featured}
+                                    onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
+                                />
+                                Featured Work
+                            </label>
                         </div>
-                        <div className={styles.formGroup}>
+                        <div className={`${styles.formGroup} ${styles.fullWidth}`}>
                             <label>Description</label>
                             <textarea
                                 placeholder="Video Description"
@@ -200,12 +204,12 @@ export default function Admin() {
                     {loading && <p>Loading...</p>}
                     <div className={styles.videoGrid}>
                         {videos.map(video => (
-                            <div key={video.id} className={styles.videoItem}>
+                            <div key={video.id} className={`${styles.videoItem} ${video.is_featured ? styles.featuredItem : ''}`}>
                                 <div className={styles.videoPreview}>
                                     <img src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`} alt={video.title} />
+                                    {video.is_featured && <span className={styles.featuredBadge}>Featured</span>}
                                 </div>
                                 <div className={styles.videoMeta}>
-                                    <span className={styles.categoryBadge}>{video.category}</span>
                                     <h3>{video.title}</h3>
                                     <div className={styles.itemActions}>
                                         <button onClick={() => handleEdit(video)} className={styles.editBtn}>Edit</button>

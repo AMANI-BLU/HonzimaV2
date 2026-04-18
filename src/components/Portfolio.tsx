@@ -55,31 +55,26 @@ export default function Portfolio({
     customPadding?: string
 }) {
     const [projects, setProjects] = useState<Project[]>([]);
-    const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
     const [activeCategory, setActiveCategory] = useState('All');
 
     useEffect(() => {
         const fetchProjects = async () => {
-            try {
-                setLoading(true);
-                const { data, error } = await supabase
-                    .from('videos')
-                    .select('*')
-                    .order('created_at', { ascending: false });
+            setLoading(true);
+            let query = supabase.from('videos').select('*');
 
-                if (error) throw error;
-                const allProjects = data || [];
-                setProjects(allProjects);
-
-                // Initial filter
-                const initial = (featuredOnly) ? allProjects.slice(0, 3) : allProjects;
-                setFilteredProjects(initial);
-            } catch (err) {
-                console.error('Error fetching portfolio:', err);
-            } finally {
-                setLoading(false);
+            if (featuredOnly) {
+                query = query.eq('is_featured', true).limit(3);
             }
+
+            const { data, error } = await query.order('created_at', { ascending: false });
+
+            if (error) {
+                console.error('Error fetching projects:', error);
+            } else if (data) {
+                setProjects(data);
+            }
+            setLoading(false);
         };
 
         fetchProjects();
@@ -151,11 +146,6 @@ export default function Portfolio({
                                 <div key={project.id} className={`${styles.projectCard} reveal`}>
                                     <YouTubeEmbed videoId={project.id} />
                                     <div className={styles.projectInfo}>
-                                        {!hideCategories && (
-                                            <span className={styles.projectCategory}>
-                                                {project.category || 'General'}
-                                            </span>
-                                        )}
                                         <h3 className={styles.projectTitle}>{project.title}</h3>
                                         <p className={styles.projectDescription}>
                                             {project.description}

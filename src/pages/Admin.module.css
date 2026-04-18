@@ -135,9 +135,27 @@
 }
 
 .formGroup textarea {
-    grid-column: span 2;
     height: 100px;
     resize: none;
+}
+
+.fullWidth {
+    grid-column: span 2;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.checkboxLabel input {
+    width: 20px;
+    height: 20px;
 }
 
 .formActions {
@@ -180,6 +198,17 @@
     border: 1px solid var(--border-color);
     border-radius: 12px;
     overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.featuredItem {
+    border-color: var(--accent-light-blue);
+    box-shadow: 0 0 20px rgba(24, 102, 255, 0.2);
+}
+
+.videoPreview {
+    position: relative;
 }
 
 .videoPreview img {
@@ -188,20 +217,21 @@
     object-fit: cover;
 }
 
-.videoMeta {
-    padding: 20px;
+.featuredBadge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent-blue);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
-.categoryBadge {
-    font-size: 0.7rem;
-    background: rgba(24, 102, 255, 0.1);
-    color: var(--accent-light-blue);
-    padding: 4px 10px;
-    border-radius: 100px;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 10px;
-    display: inline-block;
+.videoMeta {
+    padding: 20px;
 }
 
 .videoMeta h3 {
@@ -213,6 +243,61 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     line-clamp: 2;
+}
+
+/* Light Mode Support */
+[data-theme='light'] .adminContainer,
+[data-theme='light'] .loginContainer {
+    background: #f8fafc;
+}
+
+[data-theme='light'] .loginCard,
+[data-theme='light'] .formSection,
+[data-theme='light'] .videoItem {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .loginCard h2,
+[data-theme='light'] .header h1,
+[data-theme='light'] .formSection h2,
+[data-theme='light'] .listSection h2,
+[data-theme='light'] .videoMeta h3,
+[data-theme='light'] .checkboxLabel {
+    color: #0f172a;
+}
+
+[data-theme='light'] .formGroup input,
+[data-theme='light'] .formGroup textarea,
+[data-theme='light'] .input {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #0f172a;
+}
+
+[data-theme='light'] .formGroup label {
+    color: #64748b;
+}
+
+[data-theme='light'] .editBtn {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+@media (max-width: 768px) {
+    .form {
+        grid-template-columns: 1fr;
+    }
+
+    .fullWidth,
+    .formActions {
+        grid-column: span 1;
+    }
+
+    .videoGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .itemActions {
