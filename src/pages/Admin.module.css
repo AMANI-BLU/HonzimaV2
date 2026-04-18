@@ -186,8 +186,23 @@
     cursor: pointer;
 }
 
+.successBtn {
+    flex: 1;
+    background: #00c853;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
 .error h3 {
     color: #ff4d4d !important;
+}
+
+.success h3 {
+    color: #00c853 !important;
 }
 
 /* Modal Base Styles */

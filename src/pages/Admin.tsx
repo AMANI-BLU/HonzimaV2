@@ -24,7 +24,10 @@ const StatusModal = ({ isOpen, title, message, onConfirm, onCancel, type = 'conf
                 <h3>{title || (type === 'error' ? 'Error' : 'Confirmation')}</h3>
                 <p>{message}</p>
                 <div className={styles.modalActions}>
-                    <button onClick={onConfirm} className={type === 'error' ? styles.errorBtn : styles.confirmBtn}>
+                    <button
+                        onClick={onConfirm}
+                        className={type === 'error' ? styles.errorBtn : type === 'success' ? styles.successBtn : styles.confirmBtn}
+                    >
                         {type === 'confirm' ? 'Confirm' : 'OK'}
                     </button>
                     {type === 'confirm' && onCancel && (
@@ -143,6 +146,13 @@ export default function Admin() {
             } else {
                 setEditingVideo(null);
                 setFormData({ id: '', title: '', description: '', is_featured: false });
+                setModal({
+                    isOpen: true,
+                    title: 'Success!',
+                    message: `Successfully ${isUpdate ? 'updated' : 'added'} "${formData.title}"`,
+                    action: () => setModal({ ...modal, isOpen: false }),
+                    type: 'success'
+                });
                 fetchVideos();
             }
         } else {
@@ -159,6 +169,13 @@ export default function Admin() {
                 });
             } else {
                 setFormData({ id: '', title: '', description: '', is_featured: false });
+                setModal({
+                    isOpen: true,
+                    title: 'Success!',
+                    message: `Successfully added "${formData.title}"`,
+                    action: () => setModal({ ...modal, isOpen: false }),
+                    type: 'success'
+                });
                 fetchVideos();
             }
         }
@@ -169,12 +186,12 @@ export default function Admin() {
         setModal({
             isOpen: true,
             message: `Are you sure you want to permanently delete "${title}"?`,
-            action: () => executeDelete(id),
+            action: () => executeDelete(id, title),
             type: 'confirm'
         });
     };
 
-    const executeDelete = async (id: string) => {
+    const executeDelete = async (id: string, title: string) => {
         setLoading(true);
         setModal({ ...modal, isOpen: false });
         const { error } = await supabase
@@ -190,6 +207,13 @@ export default function Admin() {
                 type: 'error'
             });
         } else {
+            setModal({
+                isOpen: true,
+                title: 'Deleted',
+                message: `Successfully deleted "${title}"`,
+                action: () => setModal({ ...modal, isOpen: false }),
+                type: 'success'
+            });
             fetchVideos();
         }
         setLoading(false);
