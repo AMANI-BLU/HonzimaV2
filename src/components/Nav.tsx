@@ -26,7 +26,7 @@ export default function Nav() {
 
                 {/* Logo */}
                 <Link to="/" className={styles.logo} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                    <span className={styles.logoAccent}>HON</span>ZIMA
+                    <span className={styles.logoAccent}>Hon</span>zima
                 </Link>
 
                 {/* Hamburger Menu (Mobile Only) */}
