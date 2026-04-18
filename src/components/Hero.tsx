@@ -46,7 +46,6 @@ export default function Hero() {
 
             <div className={`${styles.visualContent} reveal delay-3`}>
                 {/* Background typographic elements and glows specific to this section */}
-                <div className={styles.bgBigChar}>e</div>
                 <div className={`${styles.floatingBadge} ${styles.badgeHugeBlur} reveal delay-4`}>Ae</div>
                 <div className={`${styles.floatingBadge} ${styles.badgeSmallSharp} reveal delay-5`}>Pr</div>
 
