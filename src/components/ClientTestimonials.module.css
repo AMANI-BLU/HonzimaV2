@@ -37,7 +37,7 @@
 .title {
     font-size: 3rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--text-color);
     letter-spacing: -2px;
     line-height: 1.1;
 }
@@ -86,8 +86,8 @@
 }
 
 .miniCard {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 24px;
     width: 320px;
@@ -120,7 +120,7 @@
 }
 
 .name {
-    color: #fff;
+    color: var(--text-color);
     font-size: 0.95rem;
     font-weight: 700;
     margin: 0;

@@ -36,7 +36,7 @@
 .title {
     font-size: 3rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--text-color);
     letter-spacing: -1.5px;
     line-height: 1.1;
 }
@@ -235,7 +235,7 @@
 .cardTitle {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--text-color);
     margin-bottom: 10px;
 }
 

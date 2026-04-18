@@ -28,13 +28,14 @@
 [data-theme='light'] {
   --bg-color: #f8fafc;
   --text-color: #0f172a;
-  --accent-blue: #1e293b;
-  --accent-light-blue: #334155;
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --border-color: rgba(0, 0, 0, 0.06);
+  --accent-blue: #235ee7;
+  --accent-light-blue: #4da3ff;
+  --card-bg: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.08);
   --text-secondary: #64748b;
-  --nav-bg: rgba(248, 250, 252, 0.85);
-  --mesh-opacity: 0.05;
+  --nav-bg: rgba(248, 250, 252, 0.9);
+  --mesh-opacity: 0.1;
+  --brand-teal: #235ee7;
   color-scheme: light;
 }
 

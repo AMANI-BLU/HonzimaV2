@@ -113,7 +113,7 @@
     opacity: 0.5;
     font-size: 0.8rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--text-color);
     margin-top: 5px;
 }
 
@@ -142,7 +142,7 @@
     position: absolute;
     font-size: 35rem;
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.02);
+    color: var(--border-color);
     right: -5%;
     top: 10%;
     z-index: 1;
@@ -255,14 +255,14 @@
     position: absolute;
     bottom: 25%;
     right: -5%;
-    background: rgba(10, 15, 30, 0.5);
+    background: var(--card-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--border-color);
     padding: 12px 24px;
     border-radius: 30px;
     font-size: 0.85rem;
-    color: #fff;
+    color: var(--text-color);
     font-weight: 500;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
     z-index: 10;
