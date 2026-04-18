@@ -19,6 +19,7 @@ export default function Footer() {
                     <div className={styles.column}>
                         <h4 className={styles.colTitle}>Quick Links</h4>
                         <ul className={styles.links}>
+                            <li><Link to="/#home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</Link></li>
                             <li><Link to="/#about">About</Link></li>
                             <li><Link to="/#services">Services</Link></li>
                             <li><Link to="/portfolio">Portfolio</Link></li>

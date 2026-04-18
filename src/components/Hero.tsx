@@ -4,7 +4,7 @@ import heroImg from '../assets/HeroI.png';
 
 export default function Hero() {
     return (
-        <section className={`container ${styles.heroContainer}`}>
+        <section id="home" className={`container ${styles.heroContainer}`}>
             <div className={styles.textContent}>
                 {/* Profile badge removed */}
 
