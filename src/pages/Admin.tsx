@@ -9,21 +9,27 @@ interface Video {
     is_featured?: boolean;
 }
 
-const ConfirmModal = ({ isOpen, message, onConfirm, onCancel }: {
+const StatusModal = ({ isOpen, title, message, onConfirm, onCancel, type = 'confirm' }: {
     isOpen: boolean,
+    title?: string,
     message: string,
     onConfirm: () => void,
-    onCancel: () => void
+    onCancel?: () => void,
+    type?: 'confirm' | 'error' | 'success'
 }) => {
     if (!isOpen) return null;
     return (
         <div className={styles.modalOverlay}>
-            <div className={styles.modalContent}>
-                <h3>Confirmation</h3>
+            <div className={`${styles.modalContent} ${styles[type]}`}>
+                <h3>{title || (type === 'error' ? 'Error' : 'Confirmation')}</h3>
                 <p>{message}</p>
                 <div className={styles.modalActions}>
-                    <button onClick={onConfirm} className={styles.confirmBtn}>Confirm</button>
-                    <button onClick={onCancel} className={styles.cancelBtn}>Cancel</button>
+                    <button onClick={onConfirm} className={type === 'error' ? styles.errorBtn : styles.confirmBtn}>
+                        {type === 'confirm' ? 'Confirm' : 'OK'}
+                    </button>
+                    {type === 'confirm' && onCancel && (
+                        <button onClick={onCancel} className={styles.cancelBtn}>Cancel</button>
+                    )}
                 </div>
             </div>
         </div>
@@ -43,15 +49,18 @@ export default function Admin() {
         is_featured: false
     });
 
-    // Confirmation Modal State
+    // Modal State
     const [modal, setModal] = useState<{
         isOpen: boolean,
+        title?: string,
         message: string,
-        action: (() => void) | null
+        action: (() => void) | null,
+        type: 'confirm' | 'error' | 'success'
     }>({
         isOpen: false,
         message: '',
-        action: null
+        action: null,
+        type: 'confirm'
     });
 
     useEffect(() => {
@@ -65,7 +74,13 @@ export default function Admin() {
         if (password === 'honzima2025') {
             setIsAuthenticated(true);
         } else {
-            alert('Incorrect password');
+            setModal({
+                isOpen: true,
+                title: 'Login Failed',
+                message: 'Incorrect password. Please try again.',
+                action: () => setModal({ ...modal, isOpen: false }),
+                type: 'error'
+            });
         }
     };
 
@@ -76,8 +91,16 @@ export default function Admin() {
             .select('*')
             .order('created_at', { ascending: false });
 
-        if (error) console.error(error);
-        else setVideos(data || []);
+        if (error) {
+            setModal({
+                isOpen: true,
+                message: `Failed to fetch videos: ${error.message}`,
+                action: () => setModal({ ...modal, isOpen: false }),
+                type: 'error'
+            });
+        } else {
+            setVideos(data || []);
+        }
         setLoading(false);
     };
 
@@ -88,7 +111,8 @@ export default function Admin() {
             setModal({
                 isOpen: true,
                 message: `Are you sure you want to update "${formData.title}"?`,
-                action: () => executeSubmit(true)
+                action: () => executeSubmit(true),
+                type: 'confirm'
             });
         } else {
             executeSubmit(false);
@@ -109,8 +133,14 @@ export default function Admin() {
                 })
                 .eq('id', editingVideo.id);
 
-            if (error) alert(error.message);
-            else {
+            if (error) {
+                setModal({
+                    isOpen: true,
+                    message: error.message,
+                    action: () => setModal({ ...modal, isOpen: false }),
+                    type: 'error'
+                });
+            } else {
                 setEditingVideo(null);
                 setFormData({ id: '', title: '', description: '', is_featured: false });
                 fetchVideos();
@@ -120,8 +150,14 @@ export default function Admin() {
                 .from('videos')
                 .insert([formData]);
 
-            if (error) alert(error.message);
-            else {
+            if (error) {
+                setModal({
+                    isOpen: true,
+                    message: error.message,
+                    action: () => setModal({ ...modal, isOpen: false }),
+                    type: 'error'
+                });
+            } else {
                 setFormData({ id: '', title: '', description: '', is_featured: false });
                 fetchVideos();
             }
@@ -133,7 +169,8 @@ export default function Admin() {
         setModal({
             isOpen: true,
             message: `Are you sure you want to permanently delete "${title}"?`,
-            action: () => executeDelete(id)
+            action: () => executeDelete(id),
+            type: 'confirm'
         });
     };
 
@@ -145,8 +182,16 @@ export default function Admin() {
             .delete()
             .eq('id', id);
 
-        if (error) alert(error.message);
-        else fetchVideos();
+        if (error) {
+            setModal({
+                isOpen: true,
+                message: error.message,
+                action: () => setModal({ ...modal, isOpen: false }),
+                type: 'error'
+            });
+        } else {
+            fetchVideos();
+        }
         setLoading(false);
     };
 
@@ -270,9 +315,11 @@ export default function Admin() {
                 </div>
             </div>
 
-            <ConfirmModal
+            <StatusModal
                 isOpen={modal.isOpen}
+                title={modal.title}
                 message={modal.message}
+                type={modal.type}
                 onConfirm={modal.action || (() => { })}
                 onCancel={() => setModal({ ...modal, isOpen: false })}
             />

@@ -164,6 +164,46 @@
     gap: 15px;
 }
 
+.confirmBtn {
+    flex: 1;
+    background: var(--accent-blue);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.errorBtn {
+    flex: 1;
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.error h3 {
+    color: #ff4d4d !important;
+}
+
+[data-theme='light'] .modalContent {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .modalContent h3 {
+    color: #0f172a;
+}
+
+[data-theme='light'] .modalContent p {
+    color: #64748b;
+}
+
 .submitBtn {
     background: var(--accent-blue);
     color: #fff;
