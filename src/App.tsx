@@ -10,6 +10,7 @@ import ClientTestimonials from './components/ClientTestimonials'
 import Portfolio from './components/Portfolio'
 import Footer from './components/Footer'
 import AllProjects from './pages/AllProjects'
+import Admin from './pages/Admin'
 import './App.css'
 
 const Home = () => (
@@ -77,6 +78,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/portfolio" element={<AllProjects />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </div>
       <Footer />
