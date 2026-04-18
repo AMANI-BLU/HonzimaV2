@@ -124,7 +124,8 @@
 .telegramIcon {
     width: 48px;
     height: 48px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -153,7 +154,8 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
 }
 
 .softwareIcon {
