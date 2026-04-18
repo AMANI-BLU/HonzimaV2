@@ -1,73 +1,105 @@
-# React + TypeScript + Vite
+# Honzima Site V2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/React-19-blue?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.x-purple?logo=vite)](https://vitejs.dev/)
+[![Supabase](https://img.shields.io/badge/Supabase-Backend-green?logo=supabase)](https://supabase.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Currently, two official plugins are available:
+A premium, institutional-grade creative portfolio website designed for high-conversion and seamless user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Honzima Portfolio Mockup](public/mockup.png)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📖 Table of Contents
+- [Project Overview](#-project-overview)
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Setup Instructions](#-setup-instructions)
+- [Admin Access](#-admin-access)
+- [License](#-license)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Project Overview
+Honzima Site V2 is a high-fidelity portfolio platform featuring interactive animations, dual-theme support, and a robust backend integration for content management. It is designed to showcase creative work with a premium "Electric Blue" aesthetic and institutional clarity.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Key Features
+- **Premium Hero Section**: High-impact introduction with fluid visual elements.
+- **Asymmetrical Services Grid**: Modern, dynamic layout for showcasing service offerings.
+- **Interactive Process Roadmap**: A high-fidelity visualization of the creative workflow.
+- **Featured Works Portfolio**: Seamlessly managed project gallery with dynamic filtering.
+- **Client Testimonials**: Integration of client feedback to build trust and authority.
+- **Dual Theme Engine**: Polished Dark and Light modes for optimized readability and aesthetic preference.
+- **Secure Admin Dashboard**: A specialized portal for managing "Featured Works" and testimonials, powered by Supabase.
+- **Fully Responsive**: Optimized for excellence across all device sizes, from mobile to desktop.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠 Tech Stack
+- **Frontend**: [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Vite](https://vitejs.dev/)
+- **Styling**: Vanilla CSS with [CSS Modules](https://github.com/css-modules/css-modules) for component-level scoping.
+- **Backend / Database**: [Supabase](https://supabase.com/) for secure authentication and data storage.
+- **Routing**: [React Router](https://reactrouter.com/) for single-page application navigation.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📂 Project Structure
+```text
+HonzimaSiteV2/
+├── public/              # Static assets (images, icons, mockup)
+├── src/
+│   ├── components/      # Reusable UI components (Hero, Nav, Footer, etc.)
+│   ├── pages/           # Page-level components (Admin, AllProjects)
+│   ├── lib/             # Supabase client and utility libraries
+│   ├── assets/          # Project-specific assets (global CSS, images)
+│   ├── App.tsx          # Main application entry and routing
+│   └── main.tsx         # Root rendering logic
+├── .env                 # Environment variables (Ignored by Git)
+├── vite.config.ts       # Vite configuration
+└── tsconfig.json        # TypeScript configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Setup Instructions
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
+- Node.js (Latest LTS recommended)
+- NPM or Yarn
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Local Development
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd HonzimaSiteV2
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables**:
+   Create a `.env` file in the root directory and add your Supabase credentials:
+   ```env
+   VITE_SUPABASE_URL=your-supabase-url
+   VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+   ```
+
+4. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+### Building for Production
+To generate a production build, run:
+```bash
+npm run build
 ```
+The output will be located in the `dist` directory.
+
+## 🔐 Admin Access
+The administrative dashboard is accessible at `/admin`. It requires authentication via Supabase and allows for real-time updates to the portfolio's content.
+
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+*Created for Honzima - Premium Creative Solutions.*
