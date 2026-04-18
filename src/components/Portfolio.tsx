@@ -108,7 +108,6 @@ export default function Portfolio({
             className={styles.portfolioSection}
             style={{ padding: customPadding }}
         >
-            <div className="ambient-glow" style={{ bottom: '20%', right: '-10%', opacity: 0.1 }}></div>
             <div className="container">
                 {!hideHeader && (
                     <div className={styles.header}>
@@ -121,6 +120,7 @@ export default function Portfolio({
                         <p className={`${styles.subtitle} reveal delay-2`}>
                             A collection of my best video editing projects across different styles and industries.
                         </p>
+                        <div className="ambient-glow" style={{ bottom: '20%', right: '-10%', opacity: 0.15 }}></div>
                     </div>
                 )}
 

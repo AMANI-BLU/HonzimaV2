@@ -3,7 +3,6 @@ import styles from './About.module.css';
 export default function About() {
     return (
         <section id="about" className={styles.aboutContainer}>
-            <div className="ambient-glow" style={{ top: '10%', right: '-10%', opacity: 0.08 }}></div>
             <div className="container">
                 <div className={styles.badge}>
                     About Me
@@ -15,6 +14,7 @@ export default function About() {
                 <h3 className={`${styles.subHeadline} reveal delay-1`}>
                     Results-focused, fast delivery, reliable quality.
                 </h3>
+                <div className="ambient-glow" style={{ top: '10%', right: '-10%', opacity: 0.2 }}></div>
 
                 <div className={styles.statsGrid}>
                     <div className={styles.statCard}>

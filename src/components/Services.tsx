@@ -128,7 +128,6 @@ const renderGraphic = (type: string) => {
 export default function Services() {
     return (
         <section id="services" className={styles.servicesSection}>
-            <div className="spotlight" style={{ top: '20%', left: '-10%', opacity: 0.1 }}></div>
             <div className="container">
                 <div className={styles.header}>
                     <div className={`${styles.badge} reveal`}>
@@ -140,6 +139,7 @@ export default function Services() {
                     <p className={`${styles.subtitle} reveal delay-2`}>
                         Transforming raw content into world-class digital experiences.
                     </p>
+                    <div className="spotlight" style={{ top: '20%', left: '-10%', opacity: 0.15 }}></div>
                 </div>
 
                 <div className={styles.servicesGrid}>
