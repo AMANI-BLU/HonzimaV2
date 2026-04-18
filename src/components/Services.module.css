@@ -1,7 +1,7 @@
 .servicesSection {
     padding: 100px 0;
     position: relative;
-    background: radial-gradient(circle at 50% 50%, rgba(24, 102, 255, 0.02) 0%, transparent 70%);
+    background: transparent;
     scroll-margin-top: 100px;
     overflow: hidden;
 }
