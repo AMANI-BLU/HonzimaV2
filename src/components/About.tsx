@@ -11,9 +11,6 @@ export default function About() {
                 <h2 className={`${styles.headline} reveal`}>
                     I partner with creators and brands to turn ideas into engaging, high-quality videos.
                 </h2>
-                <h3 className={`${styles.subHeadline} reveal delay-1`}>
-                    Results-focused, fast delivery, reliable quality.
-                </h3>
                 <div className="ambient-glow" style={{ top: '10%', right: '-10%', opacity: 0.2 }}></div>
 
                 <div className={styles.statsGrid}>

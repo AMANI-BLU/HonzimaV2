@@ -40,6 +40,9 @@ const StatusModal = ({ isOpen, title, message, onConfirm, onCancel, type = 'conf
 };
 
 export default function Admin() {
+    const DEFAULT_PASSWORD = 'honzima2025';
+    const getStoredPassword = () => localStorage.getItem('adminPassword') || DEFAULT_PASSWORD;
+
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
     const [videos, setVideos] = useState<Video[]>([]);
@@ -51,6 +54,10 @@ export default function Admin() {
         description: '',
         is_featured: false
     });
+
+    // Change Password state
+    const [showChangePwd, setShowChangePwd] = useState(false);
+    const [pwdForm, setPwdForm] = useState({ current: '', newPwd: '', confirm: '' });
 
     // Modal State
     const [modal, setModal] = useState<{
@@ -74,7 +81,7 @@ export default function Admin() {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        if (password === 'honzima2025') {
+        if (password === getStoredPassword()) {
             setIsAuthenticated(true);
         } else {
             setModal({
@@ -85,6 +92,26 @@ export default function Admin() {
                 type: 'error'
             });
         }
+    };
+
+    const handleChangePassword = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (pwdForm.current !== getStoredPassword()) {
+            setModal({ isOpen: true, title: 'Error', message: 'Current password is incorrect.', action: () => setModal({ ...modal, isOpen: false }), type: 'error' });
+            return;
+        }
+        if (pwdForm.newPwd.length < 6) {
+            setModal({ isOpen: true, title: 'Error', message: 'New password must be at least 6 characters.', action: () => setModal({ ...modal, isOpen: false }), type: 'error' });
+            return;
+        }
+        if (pwdForm.newPwd !== pwdForm.confirm) {
+            setModal({ isOpen: true, title: 'Error', message: 'Passwords do not match.', action: () => setModal({ ...modal, isOpen: false }), type: 'error' });
+            return;
+        }
+        localStorage.setItem('adminPassword', pwdForm.newPwd);
+        setPwdForm({ current: '', newPwd: '', confirm: '' });
+        setShowChangePwd(false);
+        setModal({ isOpen: true, title: 'Success!', message: 'Password changed successfully.', action: () => setModal({ ...modal, isOpen: false }), type: 'success' });
     };
 
     const fetchVideos = async () => {
@@ -256,8 +283,35 @@ export default function Admin() {
             <div className="container">
                 <header className={styles.header}>
                     <h1>Admin <span className="highlight">Dashboard</span></h1>
-                    <button onClick={() => setIsAuthenticated(false)} className={styles.logoutBtn}>Logout</button>
+                    <div style={{ display: 'flex', gap: '12px' }}>
+                        <button onClick={() => setShowChangePwd(v => !v)} className={styles.logoutBtn}>🔑 Change Password</button>
+                        <button onClick={() => setIsAuthenticated(false)} className={styles.logoutBtn}>Logout</button>
+                    </div>
                 </header>
+
+                {showChangePwd && (
+                    <div className={styles.formSection} style={{ maxWidth: 420 }}>
+                        <h2>Change Password</h2>
+                        <form onSubmit={handleChangePassword} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                            <div className={styles.formGroup}>
+                                <label>Current Password</label>
+                                <input type="password" value={pwdForm.current} onChange={e => setPwdForm({ ...pwdForm, current: e.target.value })} placeholder="Current password" required />
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label>New Password</label>
+                                <input type="password" value={pwdForm.newPwd} onChange={e => setPwdForm({ ...pwdForm, newPwd: e.target.value })} placeholder="New password (min 6 chars)" required />
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label>Confirm New Password</label>
+                                <input type="password" value={pwdForm.confirm} onChange={e => setPwdForm({ ...pwdForm, confirm: e.target.value })} placeholder="Confirm new password" required />
+                            </div>
+                            <div className={styles.formActions}>
+                                <button type="submit" className={styles.submitBtn}>Update Password</button>
+                                <button type="button" onClick={() => { setShowChangePwd(false); setPwdForm({ current: '', newPwd: '', confirm: '' }); }} className={styles.cancelBtn}>Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                )}
 
                 <div className={styles.formSection}>
                     <h2>{editingVideo ? 'Edit Video' : 'Add New Video'}</h2>
