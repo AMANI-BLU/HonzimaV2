@@ -1,0 +1,6 @@
+# robots.txt — Honzima
+User-agent: *
+Allow: /
+Disallow: /admin
+
+Sitemap: https://honzima.vercel.app/sitemap.xml
