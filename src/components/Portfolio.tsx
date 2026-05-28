@@ -6,21 +6,43 @@ import { supabase } from '../lib/supabase';
 interface Project {
     id: string;
     title: string;
-    category: string;
+    category?: string;
     description: string;
     thumbnail?: string;
 }
 
-const YouTubeEmbed = ({ videoId }: { videoId: string }) => {
+// A smart thumbnail component that loads the max resolution cover, 
+// and falls back to hqdefault seamlessly if maxres is unavailable.
+const VideoThumbnail = ({ videoId, title }: { videoId: string; title: string }) => {
+    const [imgSrc, setImgSrc] = useState(`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
+    const [isFallback, setIsFallback] = useState(false);
+
+    const handleImgError = () => {
+        if (!isFallback) {
+            setImgSrc(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+            setIsFallback(true);
+        }
+    };
+
     return (
-        <div className={styles.thumbnailContainer}>
-            <iframe
-                src={`https://www.youtube.com/embed/${videoId}?modestbranding=1&rel=0&iv_load_policy=3`}
-                title="YouTube video player"
-                className={styles.videoThumbnail}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-            ></iframe>
+        <div className={styles.thumbnailWrapper}>
+            <img
+                src={imgSrc}
+                alt={title}
+                className={styles.thumbnailImage}
+                onError={handleImgError}
+                loading="lazy"
+            />
+            <div className={styles.playOverlay}>
+                <div className={styles.playButtonWrapper}>
+                    <svg className={styles.playButtonIcon} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle className={styles.playCircleOuter} cx="50" cy="50" r="44" stroke="currentColor" strokeWidth="2" />
+                        <circle className={styles.playCircleInner} cx="50" cy="50" r="36" fill="rgba(77, 163, 255, 0.2)" stroke="currentColor" strokeWidth="1.5" />
+                        <path className={styles.playTriangle} d="M43 33L67 50L43 67V33Z" fill="currentColor" />
+                    </svg>
+                </div>
+                <span className={styles.playText}>Watch Project</span>
+            </div>
         </div>
     );
 };
@@ -43,6 +65,7 @@ const ProjectSkeleton = () => {
         </div>
     );
 };
+
 export default function Portfolio({
     featuredOnly = false,
     hideHeader = false,
@@ -54,6 +77,7 @@ export default function Portfolio({
 }) {
     const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
+    const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchProjects = async () => {
@@ -76,6 +100,31 @@ export default function Portfolio({
 
         fetchProjects();
     }, [featuredOnly]);
+
+    // Lock page scroll when video lightbox is open
+    useEffect(() => {
+        if (activeVideoId) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [activeVideoId]);
+
+    // Listen to Escape key to close lightbox
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setActiveVideoId(null);
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
 
     return (
         <section
@@ -101,17 +150,26 @@ export default function Portfolio({
 
                 {loading ? (
                     <div className={styles.skeletonGrid}>
-                        {[1, 2, 3, 4, 5, 6].map((i) => (
+                        {[1, 2, 3].map((i) => (
                             <ProjectSkeleton key={i} />
                         ))}
                     </div>
                 ) : (
                     <>
-
                         <div className={styles.portfolioGrid}>
-                            {projects.map((project) => (
-                                <div key={project.id} className={`${styles.projectCard} reveal`}>
-                                    <YouTubeEmbed videoId={project.id} />
+                            {projects.map((project, index) => (
+                                <div 
+                                    key={project.id} 
+                                    className={`${styles.projectCard} reveal`}
+                                    onClick={() => setActiveVideoId(project.id)}
+                                >
+                                    <div className={styles.cardHeader}>
+                                        <span className={styles.cardIndex}>
+                                            {(index + 1) < 10 ? `0${index + 1}` : index + 1}
+                                        </span>
+                                        <span className={styles.cardCategory}>VIDEO EDIT</span>
+                                    </div>
+                                    <VideoThumbnail videoId={project.id} title={project.title} />
                                     <div className={styles.projectInfo}>
                                         <h3 className={styles.projectTitle}>{project.title}</h3>
                                         <p className={styles.projectDescription}>
@@ -146,6 +204,34 @@ export default function Portfolio({
                     </div>
                 )}
             </div>
+
+            {/* Cinematic Fullscreen Lightbox Modal */}
+            {activeVideoId && (
+                <div className={styles.lightbox} onClick={() => setActiveVideoId(null)}>
+                    <div className={styles.lightboxGlow}></div>
+                    <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+                        <button 
+                            className={styles.closeButton} 
+                            onClick={() => setActiveVideoId(null)} 
+                            aria-label="Close video player"
+                        >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                        <div className={styles.lightboxVideoWrapper}>
+                            <iframe
+                                src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3`}
+                                title="YouTube video player"
+                                className={styles.lightboxVideo}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section >
     );
 }
