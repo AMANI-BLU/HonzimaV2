@@ -1,8 +1,7 @@
 import styles from './ClientTestimonials.module.css';
-import ludoAvatar from '../assets/LudoET.jpg';
+import ludoAvatar from '../assets/ludoo.jpg';
 import etclAvatar from '../assets/ETCL.jpg';
 import cherekaAvatar from '../assets/chereka.png';
-import myAvatar from '../assets/my.png';
 import flipperAvatar from '../assets/flipper.png';
 import alkabaAvatar from '../assets/alkaba.jpg';
 
@@ -10,7 +9,7 @@ const clientReviews = [
     {
         name: 'ETCL Real Estate',
         role: 'PLC',
-        quote: 'Working with Honzima elevated our real estate videos to a whole new level. He understands real estate marketing, not just editing.',
+        quote: 'Working with you took our real estate videos to the next level — you understand real estate marketing, not just editing.',
         avatar: etclAvatar
     },
     {
@@ -20,15 +19,9 @@ const clientReviews = [
         avatar: cherekaAvatar
     },
     {
-        name: 'M Y',
-        role: 'Travel Agency',
-        quote: 'Working with Honzima was a great experience. We will definitely be coming back for more edits.',
-        avatar: myAvatar
-    },
-    {
         name: 'LudoET',
         role: 'PLC',
-        quote: 'He transformed my vision into a stunning final video. Fast delivery and top-tier editing skills.',
+        quote: 'He transformed our vision into a stunning final video. Fast delivery and top-tier editing skills.',
         avatar: ludoAvatar
     },
     {
