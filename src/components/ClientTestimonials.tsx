@@ -1,20 +1,20 @@
 import styles from './ClientTestimonials.module.css';
 import ludoAvatar from '../assets/ludoo.jpg';
 import etclAvatar from '../assets/ETCL.jpg';
-import cherekaAvatar from '../assets/chereka.png';
-import flipperAvatar from '../assets/flipper.png';
+import cherekaAvatar from '../assets/rentopia.jpg';
+import flipperAvatar from '../assets/ethio.jpg';
 import alkabaAvatar from '../assets/alkaba.jpg';
 
 const clientReviews = [
     {
         name: 'ETCL Real Estate',
-        role: 'PLC',
+        role: 'Real Estate',
         quote: 'Working with you took our real estate videos to the next level — you understand real estate marketing, not just editing.',
         avatar: etclAvatar
     },
     {
-        name: 'Chereka Kids',
-        role: 'Small business',
+        name: 'Rentopia Properties',
+        role: 'Real Estate',
         quote: 'Great work! The edit feels smooth and exactly matches my vision.',
         avatar: cherekaAvatar
     },
@@ -31,8 +31,8 @@ const clientReviews = [
         avatar: alkabaAvatar
     },
     {
-        name: 'Flipper International School',
-        role: 'Education',
+        name: 'Ethio-Kenya Clinic',
+        role: 'Health Care',
         quote: 'The edit looks so clean, appreciate it!',
         avatar: flipperAvatar
     }

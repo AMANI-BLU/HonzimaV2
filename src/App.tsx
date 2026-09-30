@@ -6,6 +6,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import Process from './components/Process'
+import Pricing from './components/Pricing'
 import ClientTestimonials from './components/ClientTestimonials'
 import Portfolio from './components/Portfolio'
 import Footer from './components/Footer'
@@ -21,6 +22,7 @@ const Home = () => (
     <Services />
     <Portfolio featuredOnly={true} />
     <Process />
+    <Pricing />
     <ClientTestimonials />
   </>
 )

@@ -44,6 +44,7 @@ export default function Nav() {
                     }}>Home</Link>
                     <Link to="/#about" className={styles.link} onClick={() => setIsMenuOpen(false)}>About</Link>
                     <Link to="/#services" className={styles.link} onClick={() => setIsMenuOpen(false)}>Services</Link>
+                    <Link to="/#pricing" className={styles.link} onClick={() => setIsMenuOpen(false)}>Pricing</Link>
                     <Link to="/#testimonials" className={styles.link} onClick={() => setIsMenuOpen(false)}>Review</Link>
                     <Link to="/portfolio" className={styles.link} onClick={() => setIsMenuOpen(false)}>Portfolio</Link>
                 </div>
