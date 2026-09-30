@@ -9,7 +9,7 @@ export default function About() {
                 </div>
 
                 <h2 className={`${styles.headline} reveal`}>
-                    I partner with creators and brands to turn ideas into engaging, high-quality videos.
+                    I partner with creators and brands to turn ideas into engaging, <span className="highlight">high-quality videos.</span>
                 </h2>
                 <div className="ambient-glow" style={{ top: '10%', right: '-10%', opacity: 0.2 }}></div>
 
