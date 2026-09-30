@@ -188,7 +188,7 @@ export default function Pricing() {
                 <div className={styles.header}>
                     <div className={`${styles.badge} reveal`}>Pricing</div>
                     <h2 className={`${styles.title} reveal delay-1`}>
-                        Simple, <span className="highlight">Transparent</span> Pricing
+                        Pricing <span className="highlight">Packages</span> 
                     </h2>
                     <p className={`${styles.subtitle} reveal delay-2`}>
                         One flat rate per video — no hidden fees, no surprises.
